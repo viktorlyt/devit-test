@@ -23,7 +23,6 @@ export default function EditProfile({_, route }) {
     db.transaction((tx) => {
       tx.executeSql("SELECT * FROM profiles", [], (txObj, resultSet) => {
         setProfiles(resultSet.rows._array);
-        console.log("nowwwwww", resultSet.rows._array);
       });
     });
   }, []);
@@ -31,7 +30,6 @@ export default function EditProfile({_, route }) {
   const onSavePressed = () => {
     if (profiles.some((profile) => profile.email === email)) {
       alert("User already exists.");
-      console.log("existing users", profiles);
       return;
     }
 
@@ -51,7 +49,6 @@ export default function EditProfile({_, route }) {
             skype: skype,
           });
           setProfiles(existingProfiles);
-          console.log("added successfully", existingProfiles);
         },
         (txObj, error) => console.log("Error on adding profile ", error)
       );

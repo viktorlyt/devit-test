@@ -25,7 +25,6 @@ export default function LogIn() {
     db.transaction((tx) => {
       tx.executeSql("SELECT * FROM profiles", [], (txObj, resultSet) => {
         setProfiles(resultSet.rows._array);
-        console.log("login profiles", resultSet.rows._array);
       });
     });
   }, []);
@@ -34,7 +33,6 @@ export default function LogIn() {
     db.transaction((tx) => {
       tx.executeSql("SELECT * FROM profiles", [], (txObj, resultSet) => {
         setProfiles(resultSet.rows._array);
-        console.log("login profiles", resultSet.rows._array);
       });
     });
   }, [email]);

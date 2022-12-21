@@ -50,9 +50,8 @@ export default function SignUp() {
         [],
         (txObj, resultSet) => {
           setProfiles(resultSet.rows._array);
-          console.log("profiles from login", profiles);
         },
-        (txObj, error) => console.log("fhurefhuerhf", error)
+        (txObj, error) => console.log("Error", error)
       );
     });
   }, []);
@@ -83,7 +82,6 @@ export default function SignUp() {
       alert("Your passwords do not match.");
     } else if (profiles.some((profile) => profile.email === email)) {
       alert("User already exists.");
-      console.log("existing users", profiles);
     } else {
       const phoneNumber = countryCode + phone;
 
@@ -164,14 +162,12 @@ export default function SignUp() {
           placeholder={"Enter password"}
           value={password}
           onChangeText={setPassword}
-          secureTextEntry={true}
         />
         <Text style={styles.text1}>Confirm Password</Text>
         <PasswordInput
           placeholder={"Repeat password"}
           value={passwordRepeat}
           onChangeText={setPasswordRepeat}
-          secureTextEntry={true}
         />
         <CustomButton text={"Next"} onPress={onNextPressed} />
         <Text style={styles.text2}>
